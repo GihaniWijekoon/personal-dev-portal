@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import Clock from './components/Clock';
-import FunFact from './components/FunFact';
-import NavBar from './components/NavBar';
-import AboutMe from './components/AboutMe';
-import Footer from './components/Footer';
+import { useState, useEffect } from "react";
+import Clock from "./components/Clock";
+import FunFact from "./components/FunFact";
+import NavBar from "./components/NavBar";
+import AboutMe from "./components/AboutMe";
+import Footer from "./components/Footer";
 
 type GitHubUser = {
   avatar_url: string;
@@ -16,12 +16,12 @@ function App() {
 
   useEffect(() => {
     fetch("https://api.github.com/users/GihaniWijekoon")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setUser(data);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching GitHub data:", error);
         setLoading(false);
       });
@@ -37,20 +37,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Navigation Bar */}
       <NavBar />
-
-      {/* Clock positioned at top right */}
       <div className="container mx-auto px-4 relative">
         <div className="absolute right-3 top-5 w-48">
           <Clock />
         </div>
       </div>
-      
-      {/* About Me Section */}
       <AboutMe user={user} />
-      
-      {/* Fun Fact Section */}
       <div className="container mx-auto px-4">
         <div className="bg-white p-6 rounded-lg shadow-md ">
           <FunFact />

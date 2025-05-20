@@ -13,7 +13,6 @@ const AboutMe: React.FC<AboutMeProps> = ({ user }) => {
   return (
     <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="flex flex-col md:flex-row items-center">
-        {/* Left Side Content */}
         <div className="md:w-3/5 md:pr-12">
           <div className="inline-block mb-4 px-4 py-1 bg-purple-600 bg-opacity-10 rounded-full">
             <p className="text-purple-600 font-medium">SOFTWARE ENGINEER</p>
@@ -37,8 +36,6 @@ const AboutMe: React.FC<AboutMeProps> = ({ user }) => {
             GitHub Repo
           </a>
         </div>
-        
-        {/* Right Side - Profile Image */}
         <div className="md:w-2/5 mt-8 md:mt-0">
           <div className="bg-white p-4 rounded-lg shadow-md">
             <img 
