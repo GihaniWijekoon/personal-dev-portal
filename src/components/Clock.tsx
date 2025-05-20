@@ -12,7 +12,7 @@ const Clock = () => {
       setDate(now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }));
     };
 
-    updateClock(); // initial call
+    updateClock();
     const interval = setInterval(updateClock, 1000);
     return () => clearInterval(interval);
   }, []);

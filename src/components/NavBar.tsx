@@ -5,7 +5,6 @@ const NavBar = () => {
     <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="h-10 w-10 bg-purple-600 rounded-full flex items-center justify-center">
@@ -16,8 +15,6 @@ const NavBar = () => {
               <span className="font-bold text-gray-800">Gihani</span>
             </div>
           </div>
-          
-          {/* Navigation Links */}
           <nav className="hidden md:block">
             <ul className="flex space-x-8">
               <li><a href="#" className="text-gray-800 hover:text-purple-600 transition">Home</a></li>
@@ -28,8 +25,7 @@ const NavBar = () => {
               <li><a href="#" className="text-gray-800 hover:text-purple-600 transition">Blog</a></li>
             </ul>
           </nav>
-          
-          {/* Contact Button */}
+
           <div>
             <a href="#contact" className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
               Contact
