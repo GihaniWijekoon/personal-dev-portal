@@ -1,12 +1,15 @@
+
 import { useEffect, useState } from 'react';
 
 const Clock = () => {
   const [time, setTime] = useState<string>("");
+  const [date, setDate] = useState<string>("");
 
   useEffect(() => {
     const updateClock = () => {
       const now = new Date();
-      setTime(now.toLocaleTimeString());
+      setTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+      setDate(now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }));
     };
 
     updateClock(); // initial call
@@ -15,9 +18,9 @@ const Clock = () => {
   }, []);
 
   return (
-    <div className="bg-yellow-100 text-yellow-800 p-4 rounded-lg shadow text-center">
-      <h2 className="text-xl font-semibold">Current Time</h2>
-      <p className="text-2xl mt-1 font-mono">{time}</p>
+    <div>
+      <p className="text-2xl font-bold">{time}</p>
+      <p className="text-gray-500">{date}</p>
     </div>
   );
 };

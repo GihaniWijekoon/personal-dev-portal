@@ -2,11 +2,21 @@ import { useEffect, useState } from 'react';
 
 const FunFact = () => {
   const [fact, setFact] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchFact = () => {
+    setLoading(true);
     fetch("https://uselessfacts.jsph.pl/random.json?language=en")
       .then(res => res.json())
-      .then(data => setFact(data.text));
+      .then(data => {
+        setFact(data.text);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching fact:", error);
+        setFact("Did you know? Developers who take breaks are often more productive than those who don't.");
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -14,14 +24,19 @@ const FunFact = () => {
   }, []);
 
   return (
-    <div className="bg-green-100 text-green-800 p-4 rounded-lg shadow max-w-md mx-auto text-center">
-      <h2 className="text-xl font-semibold">Fun Fact</h2>
-      <p className="mt-2">{fact}</p>
+    <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
+      <div className="md:w-3/4">
+        <h2 className="text-xl font-bold text-gray-800 mb-2">Random Fun Fact</h2>
+        <p className="text-gray-700">
+          {loading ? "Loading..." : fact}
+        </p>
+      </div>
       <button
         onClick={fetchFact}
-        className="mt-3 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        className="mt-4 md:mt-0 bg-purple-600 text-white font-medium px-4 py-2 rounded hover:bg-purple-700 transition"
+        disabled={loading}
       >
-        New Fact
+        {loading ? "Loading..." : "New Fact"}
       </button>
     </div>
   );
